@@ -1,4 +1,6 @@
 import "./expenseitem.css";
+import Card from "../UI/Card";
+import { useState } from "react";
 const ExpanseDate = (props) => {
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
@@ -13,15 +15,22 @@ const ExpanseDate = (props) => {
 };
 
 function ExpenseItem(props) {
+  const [title, setTitle] = useState(props.title);
+  // let title = props.title;
+  const clickHandler = () => {
+    setTitle("Updated");
+    console.log("clicked");
+  };
   return (
     <>
-      <div className="expense-item">
+      <Card className="expense-item">
         <ExpanseDate date={props.date} />
         <div className="expense-item__description">
-          <h2>{props.title}</h2>
-          <div className="expense-item__price">${props.amount}</div>
+          <h2>{title}</h2>
+          <div className="expense-item__price">&#8377;{props.amount}</div>
         </div>
-      </div>
+        <button onClick={clickHandler}> Edit </button>
+      </Card>
     </>
   );
 }
