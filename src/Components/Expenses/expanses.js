@@ -10,6 +10,10 @@ const Expanses = (props) => {
     setFilteredyear(yearselected);
     console.log(yearselected);
   };
+  const FilteredData = props.item.filter((data) => {
+    return data.date.getFullYear().toString() === filterdyear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -17,7 +21,8 @@ const Expanses = (props) => {
           selecedyear={expensehandler}
           selectedyear={filterdyear}
         />
-        {props.item.map((data) => {
+        {/* {props.item.map((data) => { */}
+        {FilteredData.map((data) => {
           return (
             <ExpenseItem
               key={data.id}
@@ -27,6 +32,7 @@ const Expanses = (props) => {
             />
           );
         })}
+
         {/* 
       <ExpenseItem
         title={props.item[1].title}
