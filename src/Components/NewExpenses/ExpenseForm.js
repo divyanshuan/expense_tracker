@@ -25,6 +25,11 @@ const ExpenseForm = (props) => {
     props.newexpense(expenseData);
     setFormata({ ...formdata, title: "", amount: "", date: "" });
   };
+  const canclebtnHandler = (e) => {
+    e.preventDefault();
+    const btnactive = false;
+    props.btn(btnactive);
+  };
   return (
     <div>
       <form>
@@ -65,8 +70,11 @@ const ExpenseForm = (props) => {
           </div>
         </div>
         <div className="new-expense__action">
-          <button type="submit" onClick={handleSubmit}>
+          <button type="submit" onClick={canclebtnHandler}>
             {" "}
+            cancle
+          </button>
+          <button type="submit" onClick={handleSubmit}>
             Add Events
           </button>
         </div>
